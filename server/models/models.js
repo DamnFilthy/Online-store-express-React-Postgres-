@@ -76,7 +76,13 @@ const Device = sequelize.define('Device', {
     },
     img: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
+    },
+    brandId: {
+        type: DataTypes.INTEGER
+    },
+    typeId: {
+        type: DataTypes.INTEGER
     }
 })
 
@@ -102,8 +108,13 @@ const DeviceCharacteristic = sequelize.define('DeviceCharacteristic', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true,
-        allowNull: false
+        primaryKey: true
+    },
+    deviceId: {
+        type: DataTypes.INTEGER
+    },
+    characteristicId: {
+        type: DataTypes.INTEGER
     }
 })
 
@@ -141,7 +152,12 @@ const TypeBrand = sequelize.define('TypeBrand', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
+    },
+    typeId: {
+        type: DataTypes.INTEGER
+    },
+    brandId: {
+        type: DataTypes.INTEGER
     }
 })
 
@@ -154,7 +170,7 @@ const Rating = sequelize.define('Rating', {
     },
     rate: {
         type: DataTypes.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
     }
 })
 

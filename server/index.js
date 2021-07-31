@@ -13,6 +13,12 @@ const express = require('express');
 // Импорт объекта для работы с БД
 const sequelize = require('./db')
 
+// Импорт загрузки файла
+const fileupload = require('express-fileupload')
+
+// Импорт для работы со статикой 
+const path = require('path')
+
 // Импорт моделей
 const models = require('./models/models')
 
@@ -43,13 +49,17 @@ app.use(промежуточное ПО) вызывается каждый ра�
 app.use(cors())
 // Для парсинга json 
 app.use(express.json())
+// Для загрузки файлов
+app.use(fileupload({}))
+// Для раздачи файлов с сервера
+app.use(express.static(path.resolve(__dirname, 'static')))
 // Обработчик
 app.use('/api', router)
 // Обработчик ошибок
 app.use(errorHandler)
 
 
-// Функция для подключения к БД
+// Запуск сервера
 const start = async () => {
     try {
         // Функция authenticate - подключение к БД
