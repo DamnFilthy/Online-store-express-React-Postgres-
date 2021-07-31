@@ -22,6 +22,9 @@ const router = require('./routes/router')
 // Импорт модуля для отправки запросов
 const cors = require('cors')
 
+// Импорт middleware для обработки ошибок
+const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+
 // Создание порта
 const PORT = process.env.PORT
 
@@ -42,6 +45,9 @@ app.use(cors())
 app.use(express.json())
 // Обработчик
 app.use('/api', router)
+// Обработчик ошибок
+app.use(errorHandler)
+
 
 // Функция для подключения к БД
 const start = async () => {
