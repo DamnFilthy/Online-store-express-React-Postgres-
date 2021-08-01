@@ -66,6 +66,28 @@ class UserController {
         const token = generateJwt(request.user.id, request.user.email)
         return response.json({ token })
     }
+
+    async getOne(request, response) {
+        const { id } = request.params
+        const user = await User.findOne({ where: { id } })
+        return response.json(user)
+    }
+
+    async getAllUsers(request, response) {
+        const users = await User.findAll()
+        return response.json(users)
+    }
+
+    async deleteOne(request, response) {
+        const { id } = request.params
+        const user = await User.findOne({ where: { id } })
+        try {
+            await user.destroy()
+            return response.json({ user, message: "was deleted" })
+        } catch (e) {
+            return response.json(e)
+        }
+    }
 }
 
 module.exports = new UserController()

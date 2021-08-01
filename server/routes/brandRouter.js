@@ -20,6 +20,8 @@ const checkRole = require('../middleware/checkRoleMiddleware')
 // Методы роутера
 router.post('/', checkRole('ADMIN'), BrandController.create)
 router.get('/', BrandController.getAll)
+router.get('/:id', BrandController.getOne)
+router.delete('/:id', checkRole('ADMIN'), BrandController.deleteOne)
 
 // Экспортируем объект роутера 
 module.exports = router;

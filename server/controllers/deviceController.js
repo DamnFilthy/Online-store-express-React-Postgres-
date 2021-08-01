@@ -66,6 +66,17 @@ class DeviceController {
         )
         return response.json(device)
     }
+
+    async deleteOne(request, response) {
+        const { id } = request.params
+        const device = await Device.findOne({ where: { id } })
+        try {
+            await device.destroy()
+            return response.json({ device, message: "was deleted" })
+        } catch (e) {
+            return response.json(e)
+        }
+    }
 }
 
 module.exports = new DeviceController()

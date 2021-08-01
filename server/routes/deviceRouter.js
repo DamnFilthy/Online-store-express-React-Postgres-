@@ -21,6 +21,7 @@ const checkRole = require('../middleware/checkRoleMiddleware')
 router.post('/', checkRole('ADMIN'), DeviceController.create)
 router.get('/', DeviceController.getAll)
 router.get('/:id', DeviceController.getOne)
+router.delete('/:id', checkRole('ADMIN'), DeviceController.deleteOne)
 
 // Экспортируем объект роутера 
 module.exports = router;
