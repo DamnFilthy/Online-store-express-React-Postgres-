@@ -14,8 +14,11 @@ const router = new Router();
 // Импорт контроллера 
 const DeviceController = require('../controllers/deviceController');
 
+// Импортируем middleware для проверки прав доступа
+const checkRole = require('../middleware/checkRoleMiddleware')
+
 // Методы роутера
-router.post('/', DeviceController.create)
+router.post('/', checkRole('ADMIN'), DeviceController.create)
 router.get('/', DeviceController.getAll)
 router.get('/:id', DeviceController.getOne)
 

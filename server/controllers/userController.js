@@ -63,7 +63,8 @@ class UserController {
     }
 
     async checkAuth(request, response, next) {
-
+        const token = generateJwt(request.user.id, request.user.email)
+        return response.json({ token })
     }
 }
 
