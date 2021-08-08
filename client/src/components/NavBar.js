@@ -13,15 +13,15 @@ import { observer } from "mobx-react-lite";
 const NavBar = observer(() => {
     const { user } = useContext(Context)
     return (
-        <Navbar bg="dark" expand="lg">
+        <Navbar bg="light" expand="lg">
             <Container>
                 <NavLink to={SHOP_ROUTE}>Iphone Mag</NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
-                        <Nav.Link style={{ color: 'white' }} href="#home">Home</Nav.Link>
-                        <Nav.Link style={{ color: 'white' }} href="#link">Link</Nav.Link>
-                        <NavDropdown style={{ color: 'wheat' }} title="Dropdown" id="basic-nav-dropdown">
+                    <Nav className="m-auto">
+                        <Nav.Link style={{ color: 'wheat' }} href="#home">Home</Nav.Link>
+                        <Nav.Link style={{ color: 'wheat' }} href="#link">Link</Nav.Link>
+                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
